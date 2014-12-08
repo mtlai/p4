@@ -13,5 +13,9 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('start page');
 });
+
+Route::get('/survey', function() {
+    return 'Here is the survey...';
+}); 
