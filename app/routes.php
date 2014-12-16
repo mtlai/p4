@@ -1,27 +1,53 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
 
+
+
+/**
+* Index
+*/
+Route::get('/', 'IndexController@getIndex');
+/**
+* User
+* (Explicit Routing)
+*/
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
+/**
+* Recipe
+* (Explicit Routing)
+*/
+Route::get('/recipe', 'RecipeController@getIndex');
+Route::get('/recipe/edit/{id}', 'RecipeController@getEdit');
+Route::post('recipe/edit', 'RecipeController@postEdit');
+Route::get('/recipe/create', 'RecipeController@getCreate');
+Route::post('/recipe/create', 'RecipeController@postCreate');
+Route::post('/recipe/delete', 'RecipeController@postDelete');
+Route::get('/recipe/digest', 'RecipeController@getDigest');
+
+/* Ajax Search*/
+Route::get('/recipe/search', 'RecipeController@getSearch');
+Route::post('/recipe/search', 'RecipeController@postSearch');
+
+
+
+
+
+/*PRACTICE*/
 Route::get('/', function()
 {
 	return View::make('hello');
 });
 
-Route::get('/books', function() {
-    return 'Here are all the books...';
+Route::get('/recipe', function() {
+    return 'Here are all the recipes...';
 }); 
 
-Route::get('/books/{category}', function($category) {
-        return 'Here are all the books in the category of '.$category;
+Route::get('/recipes/{category}', function($category) {
+        return 'Here are all the recipes in the category of '.$category;
 }); 
 
 Route::get('/new', function() {
@@ -43,6 +69,9 @@ Route::post('/new', function() {
 
 
 
+
+
+/*TESTING*/
 
 Route::get('/get-environment',function() {
 
