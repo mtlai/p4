@@ -25,6 +25,24 @@ class CreateRecipesTable extends Migration {
 
 		});
 
+
+		Schema::create('authors', function($table) {
+
+			# AI, PK
+			$table->increments('id');
+ 
+			# created_at, updated_at columns
+			$table->timestamps();
+ 
+			# General data...
+			$table->string('name');
+			$table->date('birth_date');
+			
+			# Define foreign keys...
+			# none needed
+
+		});
+
 		Schema::create('recipes', function($table) {
 			$table->increments('id');
 			$table->string('title');
