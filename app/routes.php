@@ -1,10 +1,24 @@
 <?php
 
+/*
+Note there are no before=>csrf filters in here - it's being handled in the BaseController
+*/
+
+
+
+
+Route::get('/classes', function() {
+
+	echo Paste\Pre::render(get_declared_classes(),'');
+
+});
 
 /**
 * Index
 */
 Route::get('/', 'IndexController@getIndex');
+
+
 /**
 * User
 * (Explicit Routing)
@@ -14,82 +28,88 @@ Route::get('/login', 'UserController@getLogin' );
 Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
+
+
 /**
-* Recipe
+* Book
 * (Explicit Routing)
 */
-Route::get('/recipe', 'RecipeController@getIndex');
-Route::get('/recipe/edit/{id}', 'RecipeController@getEdit');
-Route::post('recipe/edit', 'RecipeController@postEdit');
-Route::get('/recipe/create', 'RecipeController@getCreate');
-Route::post('/recipe/create', 'RecipeController@postCreate');
-Route::post('/recipe/delete', 'RecipeController@postDelete');
-Route::get('/recipe/digest', 'RecipeController@getDigest');
+Route::get('/book', 'BookController@getIndex');
 
-/* Ajax Search*/
-Route::get('/recipe/search', 'RecipeController@getSearch');
-Route::post('/recipe/search', 'RecipeController@postSearch');
+Route::get('/book/edit/{id}', 'BookController@getEdit');
+Route::post('/book/edit', 'BookController@postEdit');
 
+Route::get('/book/create', 'BookController@getCreate');
+Route::post('/book/create', 'BookController@postCreate');
 
-/*PRACTICE*/
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::post('/book/delete', 'BookController@postDelete');
 
-Route::get('/recipe', function() {
-    return 'Here are all the recipes...';
-}); 
+Route::get('/book/digest', 'BookController@getDigest');
 
-Route::get('/recipes/{category}', function($category) {
-        return 'Here are all the recipes in the category of '.$category;
-}); 
-
-Route::get('/new', function() {
-
-    $view  = '<form method="POST">';
-    $view .= 'Title: <input type="text" name="title">';
-    $view .= '<input type="submit">';
-    $view .= '</form>';
-    return $view;
-
-});
-
-Route::post('/new', function() {
-
-    $input =  Input::all();
-    print_r($input);
-
-});
+## Ajax examples
+Route::get('/book/search', 'BookController@getSearch');
+Route::post('/book/search', 'BookController@postSearch');
 
 
+/**
+* Debug
+* (Implicit Routing)
+*/
+Route::controller('debug', 'DebugController');
+
+
+/**
+* Tag
+* (Implicit RESTful Routing)
+*/
+Route::resource('tag', 'TagController');
+
+
+/**
+* Demos
+* (Explicit Routing)
+*/
+Route::get('/demo/ping-log-file', 'DemoController@pingLogFile');
+Route::get('/demo/new-user-welcome-email', 'DemoController@newUserWelcomeEmail');
+Route::get('/demo/csrf-example', 'DemoController@csrf');
+Route::get('/demo/collections', 'DemoController@collections');
+Route::get('/demo/js-vars', 'DemoController@jsVars');
+
+Route::get('/demo/crud-create', 'DemoController@crudCreate');
+Route::get('/demo/crud-read', 'DemoController@crudRead');
+Route::get('/demo/crud-update', 'DemoController@crudUpdate');
+Route::get('/demo/crud-delete', 'DemoController@crudDelete');
+
+Route::get('/demo/collections', 'DemoController@collections');
+Route::get('/demo/query-without-constraints', 'DemoController@queryWithoutConstraints');
+Route::get('/demo/query-with-constraints', 'DemoController@queryWithConstraints');
+Route::get('/demo/query-responsibility', 'DemoController@queryResponsibility');
+Route::get('/demo/query-with-order', 'DemoController@queryWithOrder');
+
+Route::get('/demo/query-relationships-author', 'DemoController@queryRelationshipsAuthor');
+Route::get('/demo/query-relationships-tags', 'DemoController@queryRelationshipstags');
+Route::get('/demo/query-eager-loading-authors', 'DemoController@queryEagerLoadingAuthors');
+Route::get('/demo/query-eager-loading-tags-and-authors', 'DemoController@queryEagerLoadingTagsAndAuthors');
+
+Route::get('/demo/simple-ajax', 'DemoController@getSimpleAjax');
+Route::post('/demo/simple-ajax', 'DemoController@postSimpleAjax');
 
 
 
-/*TESTING*/
 
-Route::get('/get-environment',function() {
 
-    echo "Environment: ".App::environment();
 
-});
 
-Route::get('/trigger-error',function() {
 
-    # Class Foobar should not exist, so this should create an error
-    $foo = new Foobar;
 
-});
 
-Route::get('mysql-test', function() {
 
-    # Print environment
-    echo 'Environment: '.App::environment().'<br>';
 
-    # Use the DB component to select all the databases
-    $results = DB::select('SHOW DATABASES;');
 
-    # If the "Pre" package is not installed, you should output using print_r instead
-    echo Pre::render($results);
 
-});
+
+
+
+
+
+

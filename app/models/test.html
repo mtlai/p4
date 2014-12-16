@@ -1,0 +1,125 @@
+
+<!DOCTYPE HTML>
+<!-- Author: Vivian Xi
+Date: 11/30/2014
+Purpose: Event page
+Filename: events.html
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!-- <link href="wtgw.css" rel="stylesheet" type="text/css"> -->
+    <link href="events.css" rel="stylesheet" type="text/css">
+    <title>Events - WTGW</title>
+  </head>
+  <body>
+   <header id="horNav">
+<link href="modularity/navbar.css" rel="stylesheet">
+<ul>
+    <li><a href="about.html" id="about">ABOUT</a>
+         <a href="goal.html" class="hidden">GOAL</a>
+        <a href="why.html" class="hidden">WHY</a>
+        <a href="tea.html" class="hidden">TEAM</a>
+    </li>
+  </ul>
+  <ul>
+    <li><a href="events.html">EVENTS</a></li>
+  </ul>
+  <ul>
+    <li><a href="news.html">NEWS</a></li>
+  </ul>
+  <ul>
+    <li><a href="resources.html">RESOURCES</a></li>
+  </ul>
+  <ul>
+    <li><a href="calculate.html">CALCULATE</a></li>
+  </ul>
+  <ul>
+    <li><a href="involved.html">GET INVOLVED</a></li>
+  </ul>
+
+</header>
+
+<figure id="logo">
+  <img src="images/logoTrans.png" alt="Ways to Go Wellesley Logo">
+</figure>
+
+<aside id="verNav">
+  <ul>
+    <li><a href="walk.html">WALK</a></li>
+    <li><a href="train.html">TRAIN</a></li>
+    <li><a href="bike.html">BIKE</a></li>
+    <li><a href="bus.html">BUS</a></li>
+    <li><a href="carpool.html">CARPOOL</a></li>
+    <li><a href="new.html">NEW WAYS</a></li>
+  </ul>
+</aside>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+/* Author: Ella Chao
+Date: 11/26/2014
+Purpose: javascript for Dropdown effect in nav bar
+*/
+
+$("#verNav a").mouseover(
+    function() {
+        $(this).css('background-color', "white");
+});
+$("#verNav a").mouseleave(
+        function() {
+        $(this).css('background-color', "rgb(122,189,222)");
+});
+
+$("#horNav a").mouseover(
+    function() {
+        $(this).css("background-color", "rgb(122,189,222)");
+        //jQuery(this).children("a").css("background-color", "rgb(122,189,222)");
+});
+$("#horNav a").mouseleave(
+        function() {
+        $(this).css("background-color", "rgb(0,32,96");
+        //jQuery(this).children("a").css("background-color", "rgb(0,32,96");
+});
+$("#about, .hidden").mouseover(
+    function() {
+        $(".hidden").css("visibility", "visible");
+});
+$("#about, .hidden").mouseleave(
+    function() {
+        $(".hidden").css("visibility", "hidden");
+});
+</script>
+
+    <section id="events">
+      <h1>Upcoming Events for <span id="month"></span></h1>
+      <div class="eventsThumbnail hidden">
+        <p class="date"></p>
+        <p class="title"></p>
+        <span class="eventID hidden"></span>
+      </div>
+      <div id="overlay" class="hidden">
+      </div>
+      <div id="eventsDetail" class="hidden">
+        <p id="close">Close</p>
+        <br id="clear">
+        <aside>
+          <p id="titleInBox"></p>
+          <p id="dateInBox"></p>
+          <p id="timeInBox"></p>
+          <p id="locationInBox"></p>
+          <p id="extraInBox"></p>
+          <input type="hidden" id="hiddenEventID">
+        </aside>
+      </div>
+    </section>
+    <footer>
+  <div id="banner">
+    <img src="images/banner.png" alt="Banner">
+  </div>
+  <small>Vivian Xi, Ella Chao &copy;2014</small>
+</footer>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
+  <script src="script/events.js"></script>
+  </body>
+</html>
