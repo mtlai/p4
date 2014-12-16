@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 /**
 * Index
 */
@@ -31,9 +29,6 @@ Route::get('/recipe/digest', 'RecipeController@getDigest');
 /* Ajax Search*/
 Route::get('/recipe/search', 'RecipeController@getSearch');
 Route::post('/recipe/search', 'RecipeController@postSearch');
-
-
-
 
 
 /*PRACTICE*/
