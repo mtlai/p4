@@ -18,12 +18,15 @@
 
 		{{ Form::label('published','Published Year (YYYY)') }}
 		{{ Form::text('published'); }}
+		
+		{{ Form::label('ingredients','Ingredients') }}
+		{{ Form::text('ingredients'); }}
 
 		{{ Form::label('cover','Cover Image URL') }}
 		{{ Form::text('cover'); }}
 
-		{{ Form::label('purchase_link','Purchase Link URL') }}
-		{{ Form::text('purchase_link'); }}
+		{{ Form::label('credit_url','Credit URL') }}
+		{{ Form::text('credit_url'); }}
 
 		@foreach($tags as $id => $tag)
 			{{ Form::checkbox('tags[]', $id); }} {{ $tag }}

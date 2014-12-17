@@ -63,7 +63,30 @@ class CreateRecipesTable extends Migration {
 			$table->foreign('author_id')->references('id')->on('authors');
 
 		});
+		
+		
+		Schema::create('recipes', function($table) {
 
+			# AI, PK
+			$table->increments('id');
+			
+			# created_at, updated_at columns
+			$table->timestamps();
+			
+			# General data...
+			$table->string('title');
+			$table->integer('author_id')->unsigned(); # Important! FK has to be unsigned because the PK it will reference is auto-incrementing
+			$table->integer('published');
+			$table->text('ingredients');
+			$table->string('cover');
+			$table->string('credit_url');
+			
+			# Define foreign keys...
+			$table->foreign('author_id')->references('id')->on('authors');
+
+		});
+		
+/*
 
 		Schema::create('recipes', function($table) {
 			$table->increments('id');
@@ -79,7 +102,7 @@ class CreateRecipesTable extends Migration {
 			#Foreign key to users table
 			$table->foreign('user_id')->references('id')->on('users');
 		});
-
+*/
 
 
 
@@ -119,8 +142,12 @@ class CreateRecipesTable extends Migration {
 			$table->integer('tag_id')->unsigned();
 			
 			# Define foreign keys...
-			$table->foreign('recipe_id')->references('id')->on('recipes');
-			$table->foreign('tag_id')->references('id')->on('tags');
+			/*$table->foreign('recipe_id')->references('id')->on('recipes');*/
+			$table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');
+			
+			/*$table->foreign('tag_id')->references('id')->on('tags');*/
+			$table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+			/*$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');*/
 			
 		});
 		
@@ -138,12 +165,12 @@ class CreateRecipesTable extends Migration {
 	 */
 	public function down()
 	{
-		DB::statement('SET FOREIGN_KEY_CHECKS=0');
+		/*DB::statement('SET FOREIGN_KEY_CHECKS=0');
 		Schema::drop('users');		
 		Schema::drop('recipes');
 		Schema::drop('recipes_tag');
 		Schema::drop('tags');
-		DB::statement('SET FOREIGN_KEY_CHECKS=1');
+		DB::statement('SET FOREIGN_KEY_CHECKS=1');*/
 	}
 
 }

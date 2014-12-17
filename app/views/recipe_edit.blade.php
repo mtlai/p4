@@ -34,13 +34,18 @@
 		</div>
 
 		<div class='form-group'>
+			{{ Form::label('ingredients','Ingredients') }}
+			{{ Form::text('ingredients',$recipe['ingredients']); }}
+		</div>
+		
+		<div class='form-group'>
 			{{ Form::label('cover','Cover Image URL') }}
 			{{ Form::text('cover',$recipe['cover']); }}
 		</div>
 
 		<div class='form-group'>
-			{{ Form::label('purchase_link','Purchase Link URL') }}
-			{{ Form::text('purchase_link',$recipe['purchase_link']); }}
+			{{ Form::label('credit_url','Credit URL') }}
+			{{ Form::text('credit_url',$recipe['credit_url']); }}
 		</div>
 
 

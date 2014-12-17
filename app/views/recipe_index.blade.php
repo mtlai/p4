@@ -44,7 +44,7 @@
 
 				<img src='{{ $recipe['cover'] }}'>
 				<br>
-				<a href='{{ $recipe['purchase_link'] }}'>Purchase...</a>
+				<a href='{{ $recipe['credit_url'] }}'>Credit URL</a>
 			</section>
 		@endforeach
 

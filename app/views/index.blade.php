@@ -1,7 +1,7 @@
 @extends('_master')
 
 @section('title')
-	Welcome to Foobooks
+	Welcome to Secret Family Recipes
 @stop
 
 @section('head')
