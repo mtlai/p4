@@ -132,7 +132,7 @@ class TagController extends \BaseController {
 			return Redirect::to('/tag')->with('flash_message', 'Tag not found');
 		}
 
-		# Note there's a `deleting` Model event which makes sure book_tag entries are also destroyed
+		# Note there's a `deleting` Model event which makes sure recipe_tag entries are also destroyed
 		# See Tag.php for more details
 		Tag::destroy($id);
 

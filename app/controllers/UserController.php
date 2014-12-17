@@ -70,7 +70,7 @@ class UserController extends BaseController {
 
 		$user->sendWelcomeEmail();
 
-		return Redirect::to('/')->with('flash_message', 'Welcome to Foobooks!');
+		return Redirect::to('/')->with('flash_message', 'Welcome to Secret Family Recipes!');
 
 	}
 

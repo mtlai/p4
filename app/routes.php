@@ -50,6 +50,26 @@ Route::get('/book/digest', 'BookController@getDigest');
 Route::get('/book/search', 'BookController@getSearch');
 Route::post('/book/search', 'BookController@postSearch');
 
+/**
+* Recipe
+* (Explicit Routing)
+*/
+Route::get('/recipe', 'RecipeController@getIndex');
+
+Route::get('/recipe/edit/{id}', 'RecipeController@getEdit');
+Route::post('/recipe/edit', 'RecipeController@postEdit');
+
+Route::get('/recipe/create', 'RecipeController@getCreate');
+Route::post('/recipe/create', 'RecipeController@postCreate');
+
+Route::post('/recipe/delete', 'RecipeController@postDelete');
+
+Route::get('/recipe/digest', 'RecipeController@getDigest');
+
+## Ajax examples
+Route::get('/recipe/search', 'RecipeController@getSearch');
+Route::post('/recipe/search', 'RecipeController@postSearch');
+
 
 /**
 * Debug
