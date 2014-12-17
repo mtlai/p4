@@ -21,6 +21,10 @@
 		
 		{{ Form::label('ingredients','Ingredients') }}
 		{{ Form::text('ingredients'); }}
+		
+		{{ Form::label('instructions','Instructions') }}
+		{{ Form::text('instructions'); }}
+
 
 		{{ Form::label('cover','Cover Image URL') }}
 		{{ Form::text('cover'); }}

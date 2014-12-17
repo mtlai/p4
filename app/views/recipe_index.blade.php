@@ -37,6 +37,14 @@
 				</p>
 
 				<p>
+					{{$recipe['ingredients']}}
+				</p>
+				
+				<p>
+					{{$recipe['instructions']}}
+				</p>
+
+				<p>
 					@foreach($recipe['tags'] as $tag)
 						<span class='tag'>{{{ $tag->name }}}</span>
 					@endforeach

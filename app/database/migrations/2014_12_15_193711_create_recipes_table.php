@@ -78,6 +78,7 @@ class CreateRecipesTable extends Migration {
 			$table->integer('author_id')->unsigned(); # Important! FK has to be unsigned because the PK it will reference is auto-incrementing
 			$table->integer('published');
 			$table->text('ingredients');
+			$table->text('instructions');
 			$table->string('cover');
 			$table->string('credit_url');
 			

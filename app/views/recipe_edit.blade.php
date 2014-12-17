@@ -39,6 +39,12 @@
 		</div>
 		
 		<div class='form-group'>
+			{{ Form::label('instructions','Instructions') }}
+			{{ Form::text('instructions',$recipe['instructions']); }}
+		</div>
+
+		
+		<div class='form-group'>
 			{{ Form::label('cover','Cover Image URL') }}
 			{{ Form::text('cover',$recipe['cover']); }}
 		</div>
