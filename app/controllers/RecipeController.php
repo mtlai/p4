@@ -106,7 +106,29 @@ class RecipeController extends \BaseController {
 		# Instantiate the recipe model
 		$recipe = new Recipe();
 
+//Move file to /public/images & Store file name in database
+
+$file = Input::file('image_file_name');
+$destinationPath = 'uploads/';
+$filename = $file->getClientOriginalName();
+Input::file('image_file_name')->move($destinationPath, $filename);
+	/*	$image_file_name = $filename;
+
+	//Move file to /public/images & Store file name in database
+	$image_file_name = "";
+	if (Input::hasFile('file')){
+		$filename = str_random(12) . ".jpg";
+		$file = Input::file('file')->move(public_path() ."/images", $filename);
+		$image_file_name = $filename;
+	}*/
+
+	
+
 		$recipe->fill(Input::except('tags'));
+
+
+
+
 
 		# Note this save happens before we enter any tags (next step)
 		$recipe->save();

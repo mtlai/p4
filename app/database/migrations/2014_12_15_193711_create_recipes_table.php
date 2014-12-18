@@ -79,6 +79,8 @@ class CreateRecipesTable extends Migration {
 			$table->integer('published');
 			$table->text('ingredients');
 			$table->text('instructions');
+			$table->string('image_file_name');
+			$table->string('file');
 			$table->string('cover');
 			$table->string('credit_url');
 			

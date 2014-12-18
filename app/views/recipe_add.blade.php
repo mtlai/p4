@@ -8,7 +8,7 @@
 
 	<h1>Add a new recipe</h1>
 
-	{{ Form::open(array('url' => '/recipe/create')) }}
+	{{ Form::open(array('url' => '/recipe/create', 'files' => true)) }}
 
 		{{ Form::label('title','Title') }}
 		{{ Form::text('title'); }}
@@ -24,6 +24,11 @@
 		
 		{{ Form::label('instructions','Instructions') }}
 		{{ Form::text('instructions'); }}
+
+		
+
+		{{ Form::file('image_file_name')}}
+
 
 
 		{{ Form::label('cover','Cover Image URL') }}
