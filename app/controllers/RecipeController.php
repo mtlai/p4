@@ -110,18 +110,21 @@ class RecipeController extends \BaseController {
 //code based on: http://stackoverflow.com/questions/16635700/laravel-4-upload-image-form
 
 
-
 /*WORKS*/
-
 
 $file = Input::file('image_file_name');
 $destinationPath = 'uploads/';
 $filename = $file->getClientOriginalName();
 Input::file('image_file_name')->move($destinationPath, $filename);
-//$file = $_FILES['image_file_name']['name'];
 
 
-/*if (Input::hasFile('image_file_name')){
+/*If have time:   
+Add string randomizer
+check if file is empty
+
+*/
+
+/*if (Input::hasFile('image_file_name')){    //check if empty
 	//$file = Input::file('image_file_name');
 	$destinationPath = 'uploads/';
 	$filename = $file->getClientOriginalName();
@@ -140,19 +143,6 @@ $image_file_name = "";
 		
 	}
 
-
-$file = Input::file('file');
-$destinationPath = 'uploads/';
-$filename = $file->getClientOriginalName();
- $file = Input::file('file')->move($destinationPath, $filename);
- $image_file_name = $filename;
-/*
-$image_file_name = "";
-	if (Input::hasFile('file')){
-		$filename = str_random(12) . ".jpg";
-		$file = Input::file('file')->move(public_path() ."/images", $filename);
-		$image_file_name = $filename;
-	}
 	
 	
 $file = Input::file('file');
@@ -173,9 +163,7 @@ if( $upload_success ) {
 	*/
 
 	
-		//$recipe->fill(array('image_file_name'    => 'test'));
 		
-		//$recipe->image_file_name = Input::get('email'); 
 		$recipe->fill(Input::except('tags', 'image_file_name'));
 		$recipe->image_file_name = '/' . $destinationPath . $filename;
 
