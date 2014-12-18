@@ -4,13 +4,15 @@
 <http://p4.mimitlai.com>
 
 ## Description
-Share your favorite family recipes amongst to a select few people.
+Share your favorite modified family recipes amongst a select few people.
 
 ## Demo
 See Jing demo:
 
 ## Details for teaching team
-Login info: tba
+Login info: 
+username: tester@gmail.com
+password: 123456
 
 ## Outside code
 * Bootstrap: http://getbootstrap.com/
