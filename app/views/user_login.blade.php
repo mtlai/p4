@@ -11,11 +11,11 @@
 {{ Form::open(array('url' => '/login')) }}
 
     {{ Form::label('email') }}
-    {{ Form::text('email','sam@gmail.com') }}
-    
-    {{ Form::label('password') }} (sam1234)
-    {{ Form::password('password') }}
-
+    {{ Form::text('email','tester@gmail.com', array('class'=>'form-control')); }}
+    <br>
+    {{ Form::label('password') }} (123456)
+    {{ Form::password('password', array('class'=>'form-control')); }}
+	<br>
     {{ Form::submit('Submit') }}
 
 {{ Form::close() }}

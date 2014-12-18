@@ -6,86 +6,78 @@ class RecipesSeeder extends Seeder {
 
 		# Clear the tables to a blank slate
 		DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
-		DB::statement('TRUNCATE books');
+		DB::statement('TRUNCATE recipes');
 		DB::statement('TRUNCATE authors');
 		DB::statement('TRUNCATE tags');
-		DB::statement('TRUNCATE book_tag');
+		DB::statement('TRUNCATE recipe_tag');
 		DB::statement('TRUNCATE users');
 
 		# Authors
-		$fitzgerald = new Author;
-		$fitzgerald->name = 'F. Scott Fitzgerald';
-		$fitzgerald->birth_date = '1896-09-24';
-		$fitzgerald->save();
+		$mom = new Author;
+		$mom->name = 'Mom';
+		$mom->birth_date = '1896-01-24';
+		$mom->save();
 
-		$plath = new Author;
-		$plath->name = 'Sylvia Plath';
-		$plath->birth_date = '1932-10-27';
-		$plath->save();
+		$grandmother = new Author;
+		$grandmother->name = 'Grandmother';
+		$grandmother->birth_date = '1952-12-27';
+		$grandmother->save();
 
-		$angelou = new Author;
-		$angelou->name = 'Maya Angelou';
-		$angelou->birth_date = '1928-04-04';
-		$angelou->save();
+		$sister = new Author;
+		$sister->name = 'Sister';
+		$sister->birth_date = '1985-08-04';
+		$sister->save();
 
 		# Tags (Created using the Model Create shortcut method)
 		# Note: Tags model must have `protected $fillable = array('name');` in order for this to work
-		$novel         = Tag::create(array('name' => 'novel'));
-		$fiction       = Tag::create(array('name' => 'fiction'));
-		$nonfiction    = Tag::create(array('name' => 'nonfiction'));
-		$classic       = Tag::create(array('name' => 'classic'));
-		$wealth        = Tag::create(array('name' => 'wealth'));
-		$women         = Tag::create(array('name' => 'women'));
-		$autobiography = Tag::create(array('name' => 'autobiography'));
+		$Chinese         = Tag::create(array('name' => 'Chinese'));
+		$Italian       = Tag::create(array('name' => 'Italian'));
+		$Comfort    = Tag::create(array('name' => 'Comfort'));
+		$Drinks       = Tag::create(array('name' => 'Drinks'));
+		$Desserts        = Tag::create(array('name' => 'Desserts'));
+		$Appetizers         = Tag::create(array('name' => 'Appetizers'));
+		$Soups = Tag::create(array('name' => 'Soups'));
 
-		# Books
-		$gatsby = new Book;
-		$gatsby->title = 'The Great Gatsby';
-		$gatsby->published = 1925;
-		$gatsby->cover = 'http://img2.imagesbn.com/p/9780743273565_p0_v4_s114x166.JPG';
-		$gatsby->purchase_link = 'http://www.barnesandnoble.com/w/the-great-gatsby-francis-scott-fitzgerald/1116668135?ean=9780743273565';
+		# Recipes
+		$greenbeans = new Recipe;
+		$greenbeans->title = 'Garlic Green Beans';
+		$greenbeans->published = 1925;
+		$greenbeans->cover = 'http://graphics8.nytimes.com/images/2010/05/28/health/28recipehealth_600/28recipehealth_600-articleLarge.jpg';
+		$greenbeans->credit_url = 'http://allrecipes.com/Recipe/Garlic-Green-Beans/';
 
-		# Associate has to be called *before* the book is created (save())
-		$gatsby->author()->associate($fitzgerald); # Equivalent of $gatsby->author_id = $fitzgerald->id
-		$gatsby->save();
+		# Associate has to be called *before* the recipe is created (save())
+		$greenbeans->author()->associate($mom); # Equivalent of $greenbeans->author_id = $mom->id
+		$greenbeans->save();
 
-		# Attach has to be called *after* the book is created (save()),
-		# since resulting `book_id` is needed in the book_tag pivot table
-		$gatsby->tags()->attach($novel);
-		$gatsby->tags()->attach($fiction);
-		$gatsby->tags()->attach($classic);
-		$gatsby->tags()->attach($wealth);
+		# Attach has to be called *after* the recipe is created (save()),
+		# since resulting `recipe_id` is needed in the recipe_tag pivot table
+		$greenbeans->tags()->attach($Chinese);
+		
 
-		$belljar = new Book;
-		$belljar->title = 'The Bell Jar';
-		$belljar->published = 1963;
-		$belljar->cover = 'http://img1.imagesbn.com/p/9780061148514_p0_v2_s114x166.JPG';
-		$belljar->purchase_link = 'http://www.barnesandnoble.com/w/bell-jar-sylvia-plath/1100550703?ean=9780061148514';
-		$belljar->author()->associate($plath);
-		$belljar->save();
+		$meatballs = new Recipe;
+		$meatballs->title = 'Spaghetti and Meatballs';
+		$meatballs->published = 1963;
+		$meatballs->cover = 'http://www.simplyrecipes.com/wp-content/uploads/2008/04/spaghetti-meatballs.jpg';
+		$meatballs->credit_url = 'http://www.simplyrecipes.com/recipes/spaghetti_and_meatballs/';
+		$meatballs->author()->associate($grandmother);
+		$meatballs->save();
 
-		$belljar->tags()->attach($novel);
-		$belljar->tags()->attach($fiction);
-		$belljar->tags()->attach($classic);
-		$belljar->tags()->attach($women);
+		$meatballs->tags()->attach($Italian);
 
-		$cagedbird = new Book;
-		$cagedbird->title = 'I Know Why the Caged Bird Sings';
-		$cagedbird->published = 1969;
-		$cagedbird->cover = 'http://img1.imagesbn.com/p/9780345514400_p0_v1_s114x166.JPG';
-		$cagedbird->purchase_link = 'http://www.barnesandnoble.com/w/i-know-why-the-caged-bird-sings-maya-angelou/1100392955?ean=9780345514400';
-		$cagedbird->author()->associate($angelou);
-		$cagedbird->save();
-		$cagedbird->tags()->attach($autobiography);
-		$cagedbird->tags()->attach($nonfiction);
-		$cagedbird->tags()->attach($classic);
-		$cagedbird->tags()->attach($women);
+		$choccookies = new Recipe;
+		$choccookies->title = 'Chocolate Chip';
+		$choccookies->published = 1969;
+		$choccookies->cover = 'http://2.bp.blogspot.com/-YkNQfL4WEW8/TxARub05BLI/AAAAAAAAASw/DRxSTZNax9o/s200/Chocolate_Chip_Cookies300.jpg';
+		$choccookies->credit_url = 'http://www.cooksillustrated.com/recipes/4737-perfect-chocolate-chip-cookies';
+		$choccookies->author()->associate($sister);
+		$choccookies->save();
+		$choccookies->tags()->attach($Comfort);
 
 		$user = new User;
-		$user->email      = 'sam@gmail.com';
-		$user->password   = Hash::make('sam1234');
-		$user->first_name = 'Sam';
-		$user->last_name  = 'Seaborn';
+		$user->email      = 'tester@gmail.com';
+		$user->password   = Hash::make('123456');
+		$user->first_name = 'Jane';
+		$user->last_name  = 'Doe';
 		$user->save();
 
 

@@ -13,19 +13,20 @@
 
 {{ Form::open(array('url' => '/signup')) }}
 
+	<br>
  	{{ Form::label('First Name') }}
-    {{ Form::text('first_name') }}
-
+    {{ Form::text('first_name', '', array('class'=>'form-control')); }}
+	<br>
     {{ Form::label('Last Name') }}
-    {{ Form::text('last_name') }}
-
+    {{ Form::text('last_name', '', array('class'=>'form-control')); }}
+	<br>
     {{ Form::label('email') }}
-    {{ Form::text('email') }}
-
+    {{ Form::text('email', '', array('class'=>'form-control')); }}
+	<br>
     {{ Form::label('password') }}
     {{ Form::password('password') }}
     <small>Min 6 characters</small>
-
+	<br>
     {{ Form::submit('Submit') }}
 
 {{ Form::close() }}

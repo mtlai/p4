@@ -80,7 +80,6 @@ class CreateRecipesTable extends Migration {
 			$table->text('ingredients');
 			$table->text('instructions');
 			$table->string('image_file_name');
-			$table->string('file');
 			$table->string('cover');
 			$table->string('credit_url');
 			
@@ -89,23 +88,6 @@ class CreateRecipesTable extends Migration {
 
 		});
 		
-/*
-
-		Schema::create('recipes', function($table) {
-			$table->increments('id');
-			$table->string('title');
-			$table->text('ingredients');
-			$table->text('instructions');
-			$table->boolean('owner')->default(false);
-			$table->string('image_url');
-			$table->string('credit_url'); 
-			$table->integer('user_id')->unsigned();
-			$table->timestamps();
-			
-			#Foreign key to users table
-			$table->foreign('user_id')->references('id')->on('users');
-		});
-*/
 
 
 

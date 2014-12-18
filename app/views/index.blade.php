@@ -10,14 +10,9 @@
 
 @section('content')
 
-	{{ Form::open(array('url' => '/book', 'method' => 'GET')) }}
+<br>
+<br>
 
-		{{ Form::label('query','Search') }}
-
-		{{ Form::text('query'); }}
-
-		{{ Form::submit('Search'); }}
-
-	{{ Form::close() }}
+<p>Welcome to Secret Family Recipes where you can share recipes with family and friends.</p>
 
 @stop
