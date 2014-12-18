@@ -26,7 +26,8 @@
 		{{ Form::text('instructions'); }}
 
 		
-
+		{{ Form::label('image_file_name','Instructions') }}
+		
 		{{ Form::file('image_file_name')}}
 
 

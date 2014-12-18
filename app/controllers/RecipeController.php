@@ -106,25 +106,78 @@ class RecipeController extends \BaseController {
 		# Instantiate the recipe model
 		$recipe = new Recipe();
 
-//Move file to /public/images & Store file name in database
+//Move file to /public/uploads & store file name in database
+//code based on: http://stackoverflow.com/questions/16635700/laravel-4-upload-image-form
+
+
+
+/*WORKS*/
+
 
 $file = Input::file('image_file_name');
 $destinationPath = 'uploads/';
 $filename = $file->getClientOriginalName();
 Input::file('image_file_name')->move($destinationPath, $filename);
-	/*	$image_file_name = $filename;
+//$file = $_FILES['image_file_name']['name'];
 
-	//Move file to /public/images & Store file name in database
-	$image_file_name = "";
+
+/*if (Input::hasFile('image_file_name')){
+	//$file = Input::file('image_file_name');
+	$destinationPath = 'uploads/';
+	$filename = $file->getClientOriginalName();
+	Input::file('image_file_name')->move($destinationPath, $filename);
+	//$image_file_name = $filename;
+}else{
+$recipe->image_file_name()  = Input::get('image_file_name', false);
+}*/
+
+/*
+$image_file_name = "";
+	if (Input::hasFile('file')){
+		$filename = str_random(12) . ".jpg";
+		$image_file_name = $filename;
+		$file = Input::file('file')->move("/uploads", $filename);
+		
+	}
+
+
+$file = Input::file('file');
+$destinationPath = 'uploads/';
+$filename = $file->getClientOriginalName();
+ $file = Input::file('file')->move($destinationPath, $filename);
+ $image_file_name = $filename;
+/*
+$image_file_name = "";
 	if (Input::hasFile('file')){
 		$filename = str_random(12) . ".jpg";
 		$file = Input::file('file')->move(public_path() ."/images", $filename);
 		$image_file_name = $filename;
-	}*/
+	}
+	
+	
+$file = Input::file('file');
+$destinationPath = 'uploads';
+// If the uploads fail due to file system, you can try doing public_path().'/uploads' 
+$filename = str_random(12);
+//$filename = $file->getClientOriginalName();
+//$extension =$file->getClientOriginalExtension(); 
+$upload_success = Input::file('file')->move($destinationPath, $filename);
+
+if( $upload_success ) {
+   return Response::json('success', 200);
+} else {
+   return Response::json('error', 400);
+}	
+	
+	
+	*/
 
 	
-
-		$recipe->fill(Input::except('tags'));
+		//$recipe->fill(array('image_file_name'    => 'test'));
+		
+		//$recipe->image_file_name = Input::get('email'); 
+		$recipe->fill(Input::except('tags', 'image_file_name'));
+		$recipe->image_file_name = '/' . $destinationPath . $filename;
 
 
 
