@@ -48,7 +48,6 @@
 				<li><a href='/recipe/create'><span class="glyphicon glyphicon-pencil"></span> Add Recipe</a></li>
 					
 				<li><a href='/recipe'><span class="glyphicon glyphicon-th-large"></span> View All Recipes</a></li>
-				<li><a href='/recipe/search'><span class="glyphicon glyphicon-search"></span> Search Recipes</a></li>
 				<li><a href='/tag'><span class="glyphicon glyphicon-tag"></span> Recipe Tags</a></li>
 				
 				
