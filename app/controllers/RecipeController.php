@@ -113,7 +113,7 @@ class RecipeController extends \BaseController {
 /*WORKS*/
 if (Input::hasFile('image_file_name')){
 	$file = Input::file('image_file_name');
-	$destinationPath = '/uploads/';
+	$destinationPath = public_path().'/uploads/';
 	$filename = $file->getClientOriginalName();
 	Input::file('image_file_name')->move($destinationPath, $filename);
 }else
