@@ -29,11 +29,6 @@
 		</div>
 
 		<div class='form-group'>
-			{{ Form::label('published','Published Year (YYYY)') }}
-			{{ Form::text('published',$recipe['published']); }}
-		</div>
-
-		<div class='form-group'>
 			{{ Form::label('ingredients','Ingredients') }}
 			{{ Form::text('ingredients',$recipe['ingredients']); }}
 		</div>

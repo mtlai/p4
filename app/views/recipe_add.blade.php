@@ -22,13 +22,6 @@
 		{{ Form::select('author_id', $authors); }}
 		</div>
 		
-		<br>
-		<div class="input-group">
-		
-		{{ Form::label('published','Published Year (YYYY)') }}
-		{{ Form::text('published', '', array('class'=>'form-control')); }}
-		
-		</div>
 		
 		<br>
 		<div class="input-group">

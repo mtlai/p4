@@ -111,12 +111,14 @@ class RecipeController extends \BaseController {
 
 
 /*WORKS*/
-
-$file = Input::file('image_file_name');
-$destinationPath = 'uploads/';
-$filename = $file->getClientOriginalName();
-Input::file('image_file_name')->move($destinationPath, $filename);
-
+if (Input::hasFile('image_file_name')){
+	$file = Input::file('image_file_name');
+	$destinationPath = '/uploads/';
+	$filename = $file->getClientOriginalName();
+	Input::file('image_file_name')->move($destinationPath, $filename);
+}else
+	{$recipe->image_file_name  = Input::get('image_file_name', false);
+}
 
 /*If have time:   
 Add string randomizer
@@ -165,9 +167,16 @@ if( $upload_success ) {
 	
 		
 		$recipe->fill(Input::except('tags', 'image_file_name'));
-		$recipe->image_file_name = '/' . $destinationPath . $filename;
+	
+	
+	
+//	$recipe->image_file_name = $destinationPath . $filename;
 
-
+if (Input::hasFile('image_file_name')){
+	$recipe->image_file_name = $destinationPath . $filename;
+}else {
+	$recipe->image_file_name  = Input::get('image_file_name', false);
+}
 
 
 
