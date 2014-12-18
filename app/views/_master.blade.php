@@ -6,8 +6,8 @@
 	<meta charset='utf-8'>
 
 	<link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
-	<link rel='stylesheet' href='/css/foorecipes.css' type='text/css'>
-
+	<!--Extra Style-->
+    <link rel='stylesheet' href='{{ asset('styles/recipes.css') }}'>
 	@yield('head')
 
 
