@@ -8,6 +8,7 @@ Share your favorite modified family recipes amongst a select few people.
 
 ## Demo
 See Jing demo:
+<http://mimitlai.com/mlaip4.swf>
 
 
 
